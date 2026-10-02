@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quy trình Mua sắm & Cài đặt Thiết bị - Hệ thống Edge AI Camera</title>
+  <style>
+    @page { size: A4 portrait; margin: 10mm 12mm 10mm 12mm; }
+    * { box-sizing: border-box; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; line-height: 1.38; font-size: 9.3pt; margin: 0; padding: 0; background: #fff; }
+    .header { border-bottom: 2px solid #0f172a; padding-bottom: 5px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .header-title h1 { font-size: 14pt; font-weight: 800; color: #0f172a; margin: 0 0 2px 0; text-transform: uppercase; }
+    .header-title p { margin: 0; font-size: 8.8pt; color: #475569; font-weight: 600; }
+    .badge-guide { display: inline-block; background: #dcfce7; border: 1px solid #86efac; color: #166534; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 7.2pt; margin-bottom: 2px; }
+    .section-title { font-size: 9.8pt; font-weight: 800; color: #0f172a; text-transform: uppercase; margin: 9px 0 4px 0; display: flex; align-items: center; gap: 5px; }
+    .section-title::before { content: ""; display: inline-block; width: 4px; height: 12px; background: #16a34a; border-radius: 2px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 7px; font-size: 8pt; }
+    th, td { border: 1px solid #cbd5e1; padding: 4px 5px; text-align: left; vertical-align: top; }
+    th { background-color: #f1f5f9; color: #0f172a; font-weight: 700; }
+    tr:nth-child(even) td { background-color: #f8fafc; }
+    pre { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 5px 7px; font-size: 7.6pt; font-family: Consolas, Monaco, "Courier New", monospace; overflow-x: auto; margin: 3px 0 6px 0; line-height: 1.3; }
+    .code-inline { font-family: monospace; background: #f1f5f9; padding: 1px 3px; border-radius: 3px; font-size: 7.8pt; color: #0f172a; font-weight: 600; }
+    .step-box { border: 1px solid #cbd5e1; border-left: 4px solid #16a34a; background: #ffffff; border-radius: 4px; padding: 6px 8px; margin-bottom: 6px; font-size: 8.3pt; }
+    .step-header { font-weight: 700; color: #15803d; margin-bottom: 3px; text-transform: uppercase; font-size: 8.5pt; }
+    ul { margin: 2px 0 4px 14px; padding: 0; font-size: 8pt; }
+    li { margin-bottom: 1.5px; }
+    .page-break { page-break-before: always; }
+    .footer { border-top: 1px solid #e2e8f0; padding-top: 4px; margin-top: 6px; display: flex; justify-content: space-between; font-size: 7pt; color: #94a3b8; }
+  </style>
+</head>
+<body>
+
+  <!-- TRANG 1: DANH MỤC VẬT TƯ & CÀI ĐẶT MINI PC TRUNG TÂM -->
+  <div class="header">
+    <div class="header-title">
+      <div class="badge-guide">CẨM NANG TRIỂN KHAI THỰC TẾ</div>
+      <h1>QUY TRÌNH MUA SẮM VẬT TƯ & HƯỚNG DẪN SETUP</h1>
+      <p>Hướng dẫn bóc tách thiết bị, cấu hình chi tiết từng phần cứng và bàn giao liên tỉnh</p>
+    </div>
+    <div style="text-align: right; font-size: 7.8pt; color: #334155;">
+      Mô hình: TP.HCM &rarr; Đồng Tháp / Đồng Nai<br>Thời gian hoàn thành: 7 ngày
+    </div>
+  </div>
+
+  <div class="section-title">1. BẢNG BÓC TÁCH VẬT TƯ CẦN MUA & NƠI MUA TỐI ƯU</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 28%;">Hạng mục & Cấu hình</th>
+        <th style="width: 14%;">Số lượng</th>
+        <th style="width: 26%;">Từ khóa tìm kiếm / Nơi mua</th>
+        <th style="width: 16%;">Đơn giá dự kiến</th>
+        <th style="width: 16%;">Tổng chi phí</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Mini PC Trung tâm</strong><br>HP 400 G4 / Dell 3060 Micro<br>(i5-8500T, 16GB RAM, 256GB SSD)</td>
+        <td>01 cái</td>
+        <td>Shopee / Chợ Tốt: <em>"Mini PC i5 8500T 16GB"</em> hoặc các shop máy tính cũ uy tín</td>
+        <td>2.600.000 – 2.800.000 đ</td>
+        <td>~2.700.000 đ</td>
+      </tr>
+      <tr>
+        <td><strong>Bo mạch Cầu nối (Subnet Pi)</strong><br>Orange Pi Zero 3 (1GB RAM) hoặc TV Box Tx3 mini cũ chạy Armbian</td>
+        <td>02 cái<br>(1 cái Đồng Tháp, 1 cái Đồng Nai)</td>
+        <td>Shopee / Lazada: <em>"Orange Pi Zero 3"</em> hoặc hội nhóm Facebook <em>"Thanh lý TV Box cũ"</em></td>
+        <td>350.000 – 400.000 đ</td>
+        <td>~750.000 đ</td>
+      </tr>
+      <tr>
+        <td><strong>Thẻ nhớ MicroSD 32GB</strong><br>SanDisk / Kingston chính hãng Class 10 (cài OS cho 2 cục Pi)</td>
+        <td>02 thẻ</td>
+        <td>Shopee Mall / CellphoneS: <em>"Thẻ nhớ SanDisk 32GB MicroSD"</em></td>
+        <td>70.000 – 90.000 đ</td>
+        <td>~160.000 đ</td>
+      </tr>
+      <tr>
+        <td><strong>Phụ kiện kết nối</strong><br>2 Củ sạc 5V/2A + 2 sợi cáp Type-C/MicroUSB + 2 sợi dây mạng 1m</td>
+        <td>02 bộ</td>
+        <td>Tận dụng sạc điện thoại cũ ở nhà hoặc mua thêm trên Shopee</td>
+        <td>50.000 đ/bộ</td>
+        <td>~100.000 đ</td>
+      </tr>
+      <tr>
+        <td><strong>Camera IP gia đình</strong><br>Ezviz C6N hoặc Imou A22 (RTSP)</td>
+        <td>06 camera</td>
+        <td>Tận dụng camera sẵn có tại 3 hộ gia đình</td>
+        <td>0 đ (sẵn có)</td>
+        <td>0 đ</td>
+      </tr>
+      <tr>
+        <td colspan="4" style="text-align: right; font-weight: 700;">TỔNG KINH PHÍ VẬT TƯ:</td>
+        <td style="font-weight: 800; color: #15803d; font-size: 9pt;">~ 3.710.000 đ</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">2. HƯỚNG DẪN CÀI ĐẶT MINI PC TRUNG TÂM (TẠI TP.HCM)</div>
+
+  <div class="step-box">
+    <div class="step-header">Bước 1: Cấu hình BIOS tự khởi động lại khi có điện (Quan trọng nhất)</div>
+    <ul>
+      <li>Cắm bàn phím, màn hình vào Mini PC &rarr; Bật nguồn và bấm liên tục phím <strong>F2 / F10 / Delete</strong> để vào BIOS Setup.</li>
+      <li>Tìm đến mục <strong>Power Management</strong> &rarr; Tìm tùy chọn <strong>AC Recovery</strong> (hoặc <em>Restore on AC Power Loss</em> / <em>State After Power Failure</em>).</li>
+      <li>Chuyển giá trị sang: <strong>Power On</strong> (hoặc <em>Turn On</em>) &rarr; Bấm <strong>F10</strong> để lưu và khởi động lại.</li>
+      <li><em>Tác dụng: Khi cúp điện rồi có điện trở lại, máy tự động bật lên mà không cần người bấm nút nguồn.</em></li>
+    </ul>
+  </div>
+
+  <div class="step-box">
+    <div class="step-header">Bước 2: Cài đặt Hệ điều hành Ubuntu Server 24.04 LTS</div>
+    <ul>
+      <li>Tải file ISO <strong>Ubuntu Server 24.04 LTS</strong> và dùng phần mềm Rufus ghi vào USB (tối thiểu 8GB).</li>
+      <li>Cắm USB vào Mini PC, chọn khởi động từ USB và cài đặt mặc định:
+        <ul>
+          <li>Đặt hostname: <span class="code-inline">edge-ai-server</span> | Username: <span class="code-inline">admin</span>.</li>
+          <li>Đánh dấu tích chọn: <strong>Install OpenSSH Server</strong> (để sau này ngồi từ xa điều khiển qua mạng).</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="step-box">
+    <div class="step-header">Bước 3: Cài đặt Tailscale và Bật chế độ chấp nhận Subnet</div>
+    <pre><code># 1. Cài đặt Tailscale trên Ubuntu Server
+curl -fsSL https://tailscale.com/install.sh | sh
+# 2. Đăng nhập và kích hoạt nhận đường mạng từ các cục Pi ở quê
+sudo tailscale up --accept-routes</code></pre>
+  </div>
+
+  <!-- TRANG 2: CÀI ĐẶT CỤC PI Ở QUÊ & QUY TRÌNH BÀN GIAO -->
+  <div class="page-break"></div>
+
+  <div class="section-title">3. HƯỚNG DẪN CẤU HÌNH 2 CỤC PI CẦU NỐI (LÀM TRƯỚC TẠI TP.HCM)</div>
+
+  <div class="step-box">
+    <div class="step-header">Bước 1: Flash hệ điều hành Armbian/DietPi lên Thẻ nhớ</div>
+    <ul>
+      <li>Tải bản hệ điều hành nhẹ <strong>Armbian Linux</strong> (hoặc DietPi) tương ứng với dòng bo mạch Orange Pi Zero 3 hoặc TV Box.</li>
+      <li>Dùng phần mềm <strong>BalenaEtcher</strong> flash file image vào 2 thẻ nhớ 32GB &rarr; Cắm thẻ vào bo mạch &rarr; Cắm dây mạng vào modem nhà bạn ở TP.HCM để cài đặt lần đầu.</li>
+    </ul>
+  </div>
+
+  <div class="step-box">
+    <div class="step-header">Bước 2: Bật tính năng IP Forwarding trên Linux</div>
+    <pre><code># Mở file sysctl.conf
+echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.conf
+echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p</code></pre>
+  </div>
+
+  <div class="step-box">
+    <div class="step-header">Bước 3: Cài Tailscale và Biến Pi thành Subnet Router</div>
+    <pre><code># 1. Cài Tailscale
+curl -fsSL https://tailscale.com/install.sh | sh
+
+# 2. Chạy lệnh quảng bá dải mạng nội bộ (Ví dụ: Modem ở quê cấp dải 192.168.1.0/24)
+sudo tailscale up --advertise-routes=192.168.1.0/24
+
+# 3. Phê duyệt trên Web Tailscale (Admin Console):
+# Vào https://login.tailscale.com/admin/machines
+# Tìm chiếc Pi vừa kết nối -> Chọn Edit route settings -> Tích chọn ô "192.168.1.0/24" -> Bấm Save.</code></pre>
+    <p style="margin: 3px 0 0 0; font-size: 7.8pt; color: #475569;">
+      <em>Lưu ý: Nếu modem nhà ở Đồng Tháp dùng dải <span class="code-inline">192.168.1.x</span>, nhà Đồng Nai dùng dải <span class="code-inline">192.168.2.x</span>, hãy chỉnh lệnh quảng bá route tương ứng để không bị trùng lặp IP giữa 2 nhà.</em>
+    </p>
+  </div>
+
+  <div class="section-title">4. QUY TRÌNH BÀN GIAO & LẮP ĐẶT THỰC TẾ TẠI ĐỒNG THÁP & ĐỒNG NAI</div>
+
+  <div class="step-box">
+    <div class="step-header">Bước 1: Chuẩn bị Camera trước khi gửi (hoặc cài tại chỗ)</div>
+    <ul>
+      <li>Cài app <strong>Ezviz</strong> hoặc <strong>Imou Life</strong> trên điện thoại. Kết nối camera vào Wi-Fi của nhà ở quê.</li>
+      <li>Vào mục <strong>Cài đặt Camera &rarr; Cài đặt mạng</strong> &rarr; Đặt IP tĩnh cho camera (ví dụ: <span class="code-inline">192.168.1.50</span> và <span class="code-inline">192.168.1.51</span>).</li>
+      <li>Bật tính năng <strong>RTSP / ONVIF</strong> trong app và ghi nhớ <strong>Mật khẩu thiết bị</strong> (chính là mã Verification Code 6 chữ cái in dưới đáy camera).</li>
+    </ul>
+  </div>
+
+  <div class="step-box">
+    <div class="step-header">Bước 2: Hướng dẫn người nhà ở quê cắm thiết bị (Chỉ 2 phút)</div>
+    <ul>
+      <li>Đóng hộp gửi về quê gồm: <strong>Cục Pi + Củ sạc 5V + Dây cáp mạng LAN 1m</strong>.</li>
+      <li>Dặn người nhà ở quê thực hiện đúng 3 thao tác:
+        <ol>
+          <li>Cắm củ sạc của cục Pi vào ổ điện 220V trong nhà.</li>
+          <li>Lấy sợi dây mạng LAN: 1 đầu cắm vào cổng mạng của cục Pi, 1 đầu cắm vào cổng LAN (màu vàng) sau lưng modem Wi-Fi nhà mạng (Viettel/VNPT/FPT).</li>
+          <li>Camera cứ cắm điện và bắt Wi-Fi như bình thường.</li>
+        </ol>
+      </li>
+    </ul>
+  </div>
+
+  <div class="step-box">
+    <div class="step-header">Bước 3: Ngồi tại TP.HCM thêm Camera vào Web Admin</div>
+    <ul>
+      <li>Mở Web Admin của bạn trên máy tính: <span class="code-inline">https://camera.nhaminh.com</span>.</li>
+      <li>Vào mục <strong>"+ Thêm Camera Mới"</strong>:
+        <ul>
+          <li>Chọn Nhà: <strong>Nhà Ba Mẹ (Đồng Tháp)</strong>.</li>
+          <li>Nhập URL RTSP: <span class="code-inline">rtsp://admin:MẬT_KHẨU@192.168.1.50:554/h264/ch1/main/av_stream</span>.</li>
+          <li>Bấm <strong>"Kiểm tra & Kết nối"</strong> &rarr; Màn hình hiện ảnh chụp snapshot thành công. Tiến trình AI tự động kích hoạt nhận diện ngã ngay lập tức!</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <div>Hệ thống An ninh & Giám sát Thông minh Edge AI • Cẩm nang Vận hành</div>
+    <div>Quy trình Triển khai Phần cứng Thực tế • Năm 2026</div>
+  </div>
+
+</body>
+</html>
