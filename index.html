@@ -3,19 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edge AI Camera | Bảo Vệ Gia Đình Bằng AI Cục Bộ - VU. Creative</title>
-  <meta name="description" content="Hệ thống giám sát an ninh và phát hiện té ngã cho người cao tuổi bằng Edge AI. 0đ phí cloud, bảo mật dữ liệu tuyệt đối. Phát triển bởi VU. Creative.">
+  <title>Edge AI Camera — VU. Creative</title>
+  <meta name="description" content="Hệ thống giám sát an ninh bảo vệ cha mẹ từ xa bằng AI cục bộ. Phát hiện té ngã tức thì, không phí cloud, riêng tư tuyệt đối. Phát triển bởi VU. Creative.">
   <meta name="author" content="VU. Creative">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Edge AI Camera • VU. Creative">
-  <meta property="og:description" content="Bảo vệ cha mẹ và người thân từ xa bằng AI. Không phí duy trì cloud, an toàn riêng tư 100%. Kêu gọi đầu tư 2026.">
+  <meta property="og:title" content="Edge AI Camera — VU. Creative">
+  <meta property="og:description" content="Bảo vệ cha mẹ ở quê khi con cái đi làm xa. Phát hiện té ngã trong 5 giây bằng AI tại gia.">
   <meta property="og:type" content="website">
 
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
-
-  <!-- Google Sans / Plus Jakarta Sans & JetBrains Mono -->
+  <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -27,18 +24,15 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"Google Sans"', '"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', '"Google Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
             mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
-            primary: {
-              50: '#eff6ff',
-              100: '#dbeafe',
-              500: '#3b82f6',
-              600: '#2563eb',
-              700: '#1d4ed8',
-              800: '#1e40af',
-              900: '#1e3a8a',
+            apple: {
+              blue: '#0071e3',
+              dark: '#111827',
+              muted: '#6b7280',
+              border: 'rgba(255, 255, 255, 0.7)',
             }
           }
         }
@@ -47,550 +41,536 @@
   </script>
 
   <style>
+    /* iOS & macOS Liquid Glass Refraction */
     body {
-      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+      background: radial-gradient(circle at 50% 0%, #f0f4fd 0%, #fafbff 40%, #ffffff 100%);
+      color: #111827;
       -webkit-font-smoothing: antialiased;
     }
-    .subtle-shadow {
-      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+
+    .liquid-glass {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(32px) saturate(200%);
+      -webkit-backdrop-filter: blur(32px) saturate(200%);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 
+        0 20px 40px -15px rgba(0, 0, 0, 0.04),
+        0 1px 3px 0 rgba(0, 0, 0, 0.02),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 1);
     }
-    .card-shadow {
-      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 4px 10px -4px rgba(0, 0, 0, 0.02);
+
+    .liquid-glass-card {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(24px) saturate(190%);
+      -webkit-backdrop-filter: blur(24px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 
+        0 12px 30px -10px rgba(0, 0, 0, 0.03),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .card-hover {
-      transition: all 0.25s ease;
+    .liquid-glass-card:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 
+        0 24px 48px -12px rgba(0, 113, 227, 0.08),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 1);
     }
-    .card-hover:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 18px 35px -8px rgba(0, 0, 0, 0.08);
+
+    .liquid-nav {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(24px) saturate(190%);
+      -webkit-backdrop-filter: blur(24px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.03);
     }
-    @keyframes pulseJoint {
-      0%, 100% { r: 4; opacity: 1; }
-      50% { r: 6; opacity: 0.7; }
+
+    /* iPhone Hardware Casing (Chất liệu kính và thép không gỉ bóng loáng) */
+    .iphone-case {
+      background: #f8fafc;
+      border: 8px solid #0f172a;
+      box-shadow: 
+        0 25px 60px -15px rgba(15, 23, 42, 0.18),
+        0 0 0 1px rgba(255, 255, 255, 0.9),
+        inset 0 0 0 2px rgba(0, 0, 0, 0.2);
     }
-    .pose-joint {
-      animation: pulseJoint 1.6s ease-in-out infinite;
+
+    .dynamic-island {
+      width: 84px;
+      height: 22px;
+      background: #000;
+      border-radius: 20px;
+    }
+
+    /* Ambient Glow Blobs */
+    .ambient-glow-top {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(199, 224, 255, 0.6) 0%, rgba(240, 246, 255, 0) 70%);
+      filter: blur(80px);
+      pointer-events-none;
+      z-index: 0;
+    }
+
+    .ambient-glow-mid {
+      position: absolute;
+      top: 45%;
+      left: 10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(224, 231, 255, 0.5) 0%, rgba(245, 248, 255, 0) 70%);
+      filter: blur(90px);
+      pointer-events-none;
+      z-index: 0;
     }
   </style>
 </head>
 
-<body class="bg-white text-slate-800 font-sans selection:bg-blue-100 selection:text-blue-900 min-h-screen flex flex-col justify-between">
+<body class="relative overflow-x-hidden text-slate-900">
 
-  <!-- HEADER NAVIGATION -->
-  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 transition-all">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 py-3.5 flex items-center justify-between">
+  <!-- Ambient Light -->
+  <div class="ambient-glow-top"></div>
+  <div class="ambient-glow-mid"></div>
+
+  <!-- FLOATING LIQUID GLASS DOCK / NAV BAR -->
+  <header class="fixed top-5 left-0 right-0 z-50 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto liquid-nav rounded-full px-5 py-3 flex items-center justify-between">
       
-      <!-- Logo -->
-      <a href="#" class="flex items-center gap-2.5">
-        <div class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-base shadow-sm shadow-blue-500/20">
+      <!-- Brand -->
+      <a href="#" class="flex items-center gap-2">
+        <span class="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center text-xs font-bold tracking-tighter">
           V
-        </div>
-        <div>
-          <div class="font-bold text-slate-900 tracking-tight text-base leading-none">
-            Edge AI <span class="text-blue-600">Camera</span>
-          </div>
-          <p class="text-[11px] text-slate-400 font-medium mt-0.5">by VU. Creative</p>
+        </span>
+        <div class="flex items-baseline gap-1.5">
+          <span class="font-bold tracking-tight text-slate-900 text-sm">Edge AI Camera</span>
+          <span class="text-[11px] text-slate-400 font-normal">VU. Creative</span>
         </div>
       </a>
 
-      <!-- Desktop Links -->
-      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
-        <a href="#mo-phong" class="hover:text-blue-600 transition-colors">Xem Mô Phỏng</a>
-        <a href="#tam-nhin" class="hover:text-blue-600 transition-colors">Tầm Nhìn Dự Án</a>
-        <a href="#so-sanh" class="hover:text-blue-600 transition-colors">Sự Khác Biệt</a>
-        <a href="#tai-lieu" class="hover:text-blue-600 transition-colors">Hồ Sơ Đề Án</a>
-        <a href="#dau-tu" class="hover:text-blue-600 transition-colors">Cơ Hội Đầu Tư</a>
+      <!-- Quick Nav -->
+      <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-500">
+        <a href="#trai-nghiem" class="hover:text-slate-900 transition-colors">Trải nghiệm ứng dụng</a>
+        <a href="#cau-chuyen" class="hover:text-slate-900 transition-colors">Tầm nhìn & Câu chuyện</a>
+        <a href="#dau-tu" class="hover:text-slate-900 transition-colors">Nhà đầu tư</a>
       </nav>
 
-      <!-- Action & Download -->
-      <div class="flex items-center gap-3">
-        <!-- Nút Tải Xuống (Mờ + Note đang phát triển) -->
+      <!-- Actions -->
+      <div class="flex items-center gap-2">
+        <!-- Nút Tải xuống (Mờ + Note đang phát triển, không icon) -->
         <div class="relative group hidden sm:block">
-          <button type="button" onclick="showDevToast('Bộ cài đặt & Firmware Edge AI')" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-medium text-slate-400 bg-slate-100 border border-slate-200 cursor-not-allowed opacity-60 hover:opacity-75 transition-all">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-            <span>Tải Xuống</span>
+          <button type="button" onclick="showDevToast('Bản cài đặt ứng dụng')" class="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-400 bg-white/40 border border-black/5 cursor-not-allowed opacity-50">
+            Tải xuống
           </button>
-          <span class="absolute -bottom-7 right-0 text-[10px] font-medium text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded shadow-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+          <span class="absolute -bottom-7 right-0 text-[10px] text-slate-500 bg-white/95 backdrop-blur-md border border-black/5 px-2 py-0.5 rounded-full shadow-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
             Đang trong giai đoạn phát triển
           </span>
         </div>
 
-        <a href="#dau-tu" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-all shadow-sm shadow-blue-500/20 active:scale-95">
-          <span>Liên Hệ Đầu Tư</span>
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        <a href="#dau-tu" class="px-4 py-1.5 rounded-full text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 transition-all shadow-xs">
+          Hợp tác đầu tư
         </a>
       </div>
 
     </div>
   </header>
 
-  <main>
 
-    <!-- HERO SECTION (ĐƠN GIẢN, TRẮNG, TINH TẾ) -->
-    <section class="pt-12 pb-8 sm:pt-16 sm:pb-10 bg-white">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-        
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-100 mb-5">
-          <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
-          Đề án Công nghệ & Kêu gọi Đầu tư 2026 &bull; VU. Creative
+  <main class="relative z-10 pt-28 sm:pt-36">
+
+    <!-- HERO SECTION (TINH TẾ & TRUYỀN CẢM HỨNG) -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 text-center pt-6 pb-4">
+      
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-white/80 backdrop-blur-md border border-black/5 text-slate-600 mb-6">
+        <span>Đề án Công nghệ & Kêu gọi Đầu tư 2026</span>
+        <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+        <span class="text-slate-900 font-semibold">VU. Creative</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12]">
+        Bảo vệ cha mẹ ở quê nhà <br class="hidden sm:inline">
+        khi con cái đi làm xa
+      </h1>
+
+      <p class="mt-5 text-base sm:text-lg text-slate-500 max-w-2xl mx-auto font-normal leading-relaxed">
+        Hệ thống Edge AI phát hiện tai nạn té ngã trong <strong>5 giây vàng</strong>, báo động lập tức về điện thoại. <strong>0đ phí duy trì Cloud</strong> và an toàn tuyệt đối cho cuộc sống riêng tư của gia đình.
+      </p>
+
+      <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
+        <a href="#dau-tu" class="px-6 py-3 rounded-full text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 transition-all shadow-sm">
+          Đồng hành cùng VU. Creative
+        </a>
+        <a href="#trai-nghiem" class="px-5 py-3 rounded-full text-sm font-medium text-slate-700 liquid-glass hover:bg-white transition-all">
+          Trải nghiệm ứng dụng bên dưới
+        </a>
+
+        <!-- Nút Tải phần mềm mờ -->
+        <div class="relative group">
+          <button type="button" onclick="showDevToast('Phần mềm Edge AI')" class="px-5 py-3 rounded-full text-sm font-medium text-slate-400 bg-white/40 border border-black/5 cursor-not-allowed opacity-50">
+            Tải phần mềm
+          </button>
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] text-slate-500 bg-white/95 backdrop-blur-md border border-black/5 px-2 py-0.5 rounded-full shadow-xs whitespace-nowrap">
+            Đang trong giai đoạn phát triển
+          </span>
         </div>
+      </div>
 
-        <!-- Headline -->
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.2]">
-          Bảo vệ cha mẹ và người thân từ xa <br class="hidden sm:inline">
-          bằng <span class="text-blue-600 font-extrabold">Trí Tuệ Nhân Tạo Tại Gia</span>
-        </h1>
+    </section>
 
-        <!-- Subtitle -->
-        <p class="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal">
-          Một giải pháp camera thông minh tự động <strong>phát hiện té ngã trong 5 giây</strong>, gửi cảnh báo tức thì về điện thoại, <strong>không tốn 1 đồng phí cloud</strong> và giữ kín 100% dữ liệu riêng tư của gia đình.
+
+    <!-- SECTION: TRẢI NGHIỆM WOW — MÔ PHỎNG DUAL APP ĐIỆN THOẠI (PWA & TELEGRAM BOT) -->
+    <section id="trai-nghiem" class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+      
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <span class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Trực quan hóa hệ sinh thái</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
+          Hoạt động liền mạch giữa hai đầu thiết bị
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-2">
+          Bấm nút mô phỏng trên App PWA để quan sát cú ngã và xem cách Bot Telegram ở TP.HCM nhận tin nhắn báo động tức thì.
         </p>
-
-        <!-- CTAs -->
-        <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
-          <a href="#dau-tu" class="px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-all shadow-sm shadow-blue-500/20">
-            Xuống Tiền & Đồng Hành Cùng Dự Án
-          </a>
-          <a href="#tam-nhin" class="px-5 py-2.5 rounded-lg text-sm font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors">
-            Tìm Hiểu Tầm Nhìn
-          </a>
-
-          <!-- Nút Tải Xuống Mobile/Desktop Mờ có Note -->
-          <div class="relative group">
-            <button type="button" onclick="showDevToast('Phần mềm Edge AI')" class="px-4 py-2.5 rounded-lg text-sm font-medium text-slate-400 bg-slate-50 border border-slate-200 cursor-not-allowed opacity-60 flex items-center gap-1.5">
-              <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-              <span>Tải Phần Mềm</span>
-            </button>
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-medium text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded shadow-sm whitespace-nowrap">
-              Đang phát triển
-            </div>
-          </div>
-        </div>
-
-        <!-- 3 Quick Value Props -->
-        <div class="mt-8 pt-6 border-t border-slate-100 grid grid-cols-3 gap-2 max-w-xl mx-auto text-center">
-          <div>
-            <div class="text-lg sm:text-xl font-bold text-slate-900">0 VNĐ</div>
-            <div class="text-[12px] text-slate-500">Phí duy trì cloud</div>
-          </div>
-          <div>
-            <div class="text-lg sm:text-xl font-bold text-blue-600">&lt; 5 Giây</div>
-            <div class="text-[12px] text-slate-500">Phát hiện sự cố ngã</div>
-          </div>
-          <div>
-            <div class="text-lg sm:text-xl font-bold text-emerald-600">100%</div>
-            <div class="text-[12px] text-slate-500">Dữ liệu tại nhà riêng</div>
-          </div>
-        </div>
-
       </div>
-    </section>
 
-
-    <!-- SECTION: MÔ PHỎNG TƯƠNG TÁC (ĐƯỢC ĐẨY LÊN ĐẦU THEO Ý BẠN) -->
-    <section id="mo-phong" class="py-10 bg-slate-50 border-y border-slate-100">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <!-- DUAL PHONE SHOWCASE WRAPPER -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start justify-center max-w-4xl mx-auto">
         
-        <div class="text-center max-w-xl mx-auto mb-6">
-          <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">Trải Nghiệm Trực Quan</span>
-          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">Cách Hệ Thống Bắt Trọn Cú Ngã</h2>
-          <p class="text-xs sm:text-sm text-slate-600 mt-1">
-            Bấm nút thử nghiệm bên dưới để xem AI nhận diện khung xương người và cách tin nhắn cảnh báo gửi về điện thoại người nhà.
-          </p>
-        </div>
-
-        <!-- Simulation Box: Clean White Style -->
-        <div class="bg-white rounded-2xl border border-slate-200 card-shadow p-5 sm:p-7">
+        <!-- PHONE 1: PWA APPLICATION (CAMERA GIÁM SÁT & AI POSE TẠI NHÀ) -->
+        <div class="flex flex-col items-center">
           
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+          <div class="text-xs font-semibold text-slate-500 mb-3 flex items-center gap-1.5">
+            <span>Ứng dụng Web App (PWA) &bull; Camera trực tiếp</span>
+          </div>
+
+          <!-- iPhone 1 Shell -->
+          <div class="iphone-case w-[310px] sm:w-[330px] h-[610px] rounded-[48px] p-3 flex flex-col justify-between relative overflow-hidden">
             
-            <!-- Left: Simulated Camera Frame (7 cols) -->
-            <div class="md:col-span-7 flex flex-col">
-              <div class="flex items-center justify-between pb-2.5 mb-2.5 border-b border-slate-100 text-xs">
-                <div class="flex items-center gap-2">
-                  <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                  <span class="font-semibold text-slate-800">Camera Phòng Khách (Nhà ở quê)</span>
+            <!-- Screen Header & Dynamic Island -->
+            <div class="w-full flex items-center justify-between px-3 pt-1">
+              <span class="text-[11px] font-semibold text-slate-800">14:15</span>
+              <div class="dynamic-island flex items-center justify-center">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              </div>
+              <span class="text-[10px] font-mono text-slate-500">5G</span>
+            </div>
+
+            <!-- PWA App Interface Inside Screen -->
+            <div class="flex-1 mt-3 rounded-[32px] bg-slate-900 text-white p-3.5 flex flex-col justify-between overflow-hidden relative">
+              
+              <!-- App Top Bar -->
+              <div class="flex items-center justify-between pb-2 border-b border-slate-800 text-xs">
+                <div>
+                  <div class="font-bold text-sm tracking-tight">Nhà Ba Mẹ</div>
+                  <div class="text-[10px] text-slate-400">Đồng Tháp &bull; Phòng khách</div>
                 </div>
-                <span class="font-mono text-slate-500 text-[11px]">AI Model: YOLOv8-Pose</span>
+                <span class="text-[10px] bg-emerald-950 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-800">
+                  Trực tiếp
+                </span>
               </div>
 
-              <!-- Viewport Screen -->
-              <div id="sim-viewport" class="relative w-full h-[300px] sm:h-[330px] rounded-xl bg-slate-100 border border-slate-200 overflow-hidden flex items-center justify-center transition-all duration-300">
+              <!-- Live Stream & Skeleton Canvas Mockup -->
+              <div id="sim-viewport" class="relative my-2 flex-1 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-center overflow-hidden transition-all duration-300">
                 
-                <!-- Room Background Sketch -->
+                <!-- Floor Geometry Grid -->
                 <div class="absolute inset-0 flex items-end justify-center pointer-events-none opacity-20">
-                  <div class="w-56 h-20 border-t-2 border-slate-400 bg-slate-200/50 rounded-t"></div>
+                  <div class="w-48 h-16 border-t border-slate-600 bg-slate-800/40 rounded-t-lg"></div>
                 </div>
 
-                <!-- Standing Skeleton -->
-                <div id="person-standing" class="relative z-10 transition-all duration-500 flex flex-col items-center">
-                  <svg width="120" height="230" viewBox="0 0 140 260" class="filter drop-shadow-sm">
-                    <line x1="70" y1="50" x2="70" y2="120" stroke="#2563eb" stroke-width="4" stroke-linecap="round" />
-                    <line x1="30" y1="75" x2="110" y2="75" stroke="#2563eb" stroke-width="4" stroke-linecap="round" />
-                    <line x1="30" y1="75" x2="20" y2="120" stroke="#2563eb" stroke-width="3" />
-                    <line x1="20" y1="120" x2="15" y2="160" stroke="#2563eb" stroke-width="3" />
-                    <line x1="110" y1="75" x2="120" y2="120" stroke="#2563eb" stroke-width="3" />
-                    <line x1="120" y1="120" x2="125" y2="160" stroke="#2563eb" stroke-width="3" />
-                    <line x1="70" y1="120" x2="50" y2="180" stroke="#2563eb" stroke-width="4" />
-                    <line x1="50" y1="180" x2="45" y2="240" stroke="#2563eb" stroke-width="4" />
-                    <line x1="70" y1="120" x2="90" y2="180" stroke="#2563eb" stroke-width="4" />
-                    <line x1="90" y1="180" x2="95" y2="240" stroke="#2563eb" stroke-width="4" />
-                    <circle cx="70" cy="30" r="14" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2" />
-                    <circle cx="70" cy="50" r="4" fill="#60a5fa" class="pose-joint" />
-                    <circle cx="30" cy="75" r="4" fill="#60a5fa" class="pose-joint" />
-                    <circle cx="110" cy="75" r="4" fill="#60a5fa" class="pose-joint" />
-                    <circle cx="70" cy="120" r="5" fill="#60a5fa" class="pose-joint" />
-                    <circle cx="50" cy="180" r="4" fill="#60a5fa" class="pose-joint" />
-                    <circle cx="90" cy="180" r="4" fill="#60a5fa" class="pose-joint" />
+                <!-- Standing Person State -->
+                <div id="person-standing" class="relative z-10 flex flex-col items-center transition-all duration-500">
+                  <svg width="100" height="200" viewBox="0 0 140 260">
+                    <line x1="70" y1="50" x2="70" y2="120" stroke="#0071e3" stroke-width="4" stroke-linecap="round" />
+                    <line x1="30" y1="75" x2="110" y2="75" stroke="#0071e3" stroke-width="4" stroke-linecap="round" />
+                    <line x1="30" y1="75" x2="20" y2="120" stroke="#0071e3" stroke-width="3" stroke-linecap="round" />
+                    <line x1="20" y1="120" x2="15" y2="160" stroke="#0071e3" stroke-width="3" stroke-linecap="round" />
+                    <line x1="110" y1="75" x2="120" y2="120" stroke="#0071e3" stroke-width="3" stroke-linecap="round" />
+                    <line x1="120" y1="120" x2="125" y2="160" stroke="#0071e3" stroke-width="3" stroke-linecap="round" />
+                    <line x1="70" y1="120" x2="50" y2="180" stroke="#0071e3" stroke-width="4" stroke-linecap="round" />
+                    <line x1="50" y1="180" x2="45" y2="240" stroke="#0071e3" stroke-width="4" stroke-linecap="round" />
+                    <line x1="70" y1="120" x2="90" y2="180" stroke="#0071e3" stroke-width="4" stroke-linecap="round" />
+                    <line x1="90" y1="180" x2="95" y2="240" stroke="#0071e3" stroke-width="4" stroke-linecap="round" />
+                    <circle cx="70" cy="30" r="14" fill="#0071e3" />
+                    <circle cx="70" cy="50" r="4" fill="#fff" />
+                    <circle cx="70" cy="120" r="4" fill="#fff" />
+                    <circle cx="50" cy="180" r="3.5" fill="#fff" />
+                    <circle cx="90" cy="180" r="3.5" fill="#fff" />
                   </svg>
-                  <span class="mt-2 text-[11px] font-medium text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-full">
-                    Người đứng bình thường (98%)
+                  <span class="text-[10px] font-mono text-cyan-300 bg-cyan-950/80 px-2 py-0.5 rounded-full mt-1 border border-cyan-800">
+                    Dáng đứng: Bình thường
                   </span>
                 </div>
 
-                <!-- Fallen Skeleton (Hidden Initially) -->
-                <div id="person-fallen" class="hidden relative z-10 transition-all duration-500 flex flex-col items-center">
-                  <svg width="230" height="95" viewBox="0 0 260 110" class="filter drop-shadow-sm">
-                    <line x1="70" y1="75" x2="160" y2="78" stroke="#dc2626" stroke-width="5" stroke-linecap="round" />
-                    <line x1="70" y1="60" x2="70" y2="90" stroke="#dc2626" stroke-width="4" stroke-linecap="round" />
-                    <line x1="70" y1="60" x2="35" y2="55" stroke="#dc2626" stroke-width="3" />
-                    <line x1="35" y1="55" x2="15" y2="50" stroke="#dc2626" stroke-width="3" />
-                    <line x1="160" y1="78" x2="210" y2="65" stroke="#dc2626" stroke-width="4" />
-                    <line x1="210" y1="65" x2="245" y2="60" stroke="#dc2626" stroke-width="4" />
-                    <line x1="160" y1="78" x2="215" y2="95" stroke="#dc2626" stroke-width="4" />
-                    <line x1="215" y1="95" x2="250" y2="100" stroke="#dc2626" stroke-width="4" />
-                    <circle cx="30" cy="75" r="14" fill="#ef4444" stroke="#b91c1c" stroke-width="2" />
-                    <circle cx="70" cy="75" r="5" fill="#fca5a5" class="pose-joint" />
-                    <circle cx="160" cy="78" r="5" fill="#fca5a5" class="pose-joint" />
+                <!-- Fallen Person State -->
+                <div id="person-fallen" class="hidden relative z-10 flex flex-col items-center transition-all duration-500">
+                  <svg width="200" height="90" viewBox="0 0 260 110">
+                    <line x1="70" y1="75" x2="160" y2="78" stroke="#ff3b30" stroke-width="5" stroke-linecap="round" />
+                    <line x1="70" y1="60" x2="70" y2="90" stroke="#ff3b30" stroke-width="4" stroke-linecap="round" />
+                    <line x1="70" y1="60" x2="35" y2="55" stroke="#ff3b30" stroke-width="3" stroke-linecap="round" />
+                    <line x1="35" y1="55" x2="15" y2="50" stroke="#ff3b30" stroke-width="3" stroke-linecap="round" />
+                    <line x1="160" y1="78" x2="210" y2="65" stroke="#ff3b30" stroke-width="4" stroke-linecap="round" />
+                    <line x1="210" y1="65" x2="245" y2="60" stroke="#ff3b30" stroke-width="4" stroke-linecap="round" />
+                    <line x1="160" y1="78" x2="215" y2="95" stroke="#ff3b30" stroke-width="4" stroke-linecap="round" />
+                    <line x1="215" y1="95" x2="250" y2="100" stroke="#ff3b30" stroke-width="4" stroke-linecap="round" />
+                    <circle cx="30" cy="75" r="14" fill="#ff3b30" />
+                    <circle cx="70" cy="75" r="4" fill="#fff" />
+                    <circle cx="160" cy="78" r="4" fill="#fff" />
+                    <circle cx="210" cy="65" r="3.5" fill="#fff" />
+                    <circle cx="215" cy="95" r="3.5" fill="#fff" />
                   </svg>
-                  <span class="mt-2 text-[11px] font-bold text-red-700 bg-red-50 border border-red-200 px-2.5 py-0.5 rounded-full animate-pulse">
-                    ⚠️ PHÁT HIỆN TÉ NGÃ • BẤT ĐỘNG &gt; 5S
+                  <span class="text-[10px] font-mono text-rose-300 bg-rose-950 px-2 py-0.5 rounded-full mt-1 border border-rose-800 animate-pulse">
+                    Cảnh báo ngã &bull; Bất động 5.2s
                   </span>
                 </div>
 
-                <!-- Live Status HUD -->
-                <div class="absolute bottom-2.5 left-2.5 bg-white/95 backdrop-blur border border-slate-200 py-1.5 px-3 rounded-lg text-[11px] font-mono shadow-sm">
-                  Góc xương: <span id="tele-angle" class="font-bold text-blue-600">88° (Đứng)</span> &bull; 
-                  Trạng thái: <span id="tele-status" class="font-bold text-emerald-600">An Toàn</span>
+                <!-- HUD Telemetry -->
+                <div class="absolute bottom-2 left-2 text-[9px] font-mono text-slate-400 bg-slate-900/90 px-2 py-1 rounded border border-slate-800">
+                  AI: YOLOv8-Pose &bull; 4 FPS
                 </div>
 
               </div>
 
-              <!-- Controls -->
-              <div class="mt-3 flex items-center justify-between gap-3">
+              <!-- PWA Interactive Controller Button Inside Screen -->
+              <div class="space-y-1.5 pt-1">
+                <button id="btn-trigger-fall" class="w-full py-2.5 rounded-xl text-xs font-semibold text-white bg-rose-600 hover:bg-rose-500 transition-all shadow-md active:scale-95">
+                  Bấm để mô phỏng cú ngã
+                </button>
+                <button id="btn-reset-sim" class="w-full py-1.5 rounded-xl text-[11px] font-medium text-slate-400 bg-slate-800 hover:bg-slate-700 transition-all">
+                  Đặt lại trạng thái bình thường
+                </button>
+              </div>
+
+            </div>
+
+            <!-- Home Indicator Bar -->
+            <div class="w-32 h-1 bg-slate-300 rounded-full mx-auto mt-2"></div>
+
+          </div>
+
+        </div>
+
+
+        <!-- PHONE 2: TELEGRAM BOT CHAT (ĐIỆN THOẠI CON CÁI Ở TP.HCM) -->
+        <div class="flex flex-col items-center">
+          
+          <div class="text-xs font-semibold text-slate-500 mb-3 flex items-center gap-1.5">
+            <span>Điện thoại con cái &bull; Kênh báo động Telegram</span>
+          </div>
+
+          <!-- iPhone 2 Shell -->
+          <div class="iphone-case w-[310px] sm:w-[330px] h-[610px] rounded-[48px] p-3 flex flex-col justify-between relative overflow-hidden">
+            
+            <!-- Screen Header & Dynamic Island -->
+            <div class="w-full flex items-center justify-between px-3 pt-1">
+              <span class="text-[11px] font-semibold text-slate-800">14:15</span>
+              <div class="dynamic-island flex items-center justify-center">
+                <span id="dynamic-island-alert" class="hidden w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+              </div>
+              <span class="text-[10px] font-mono text-slate-500">WiFi</span>
+            </div>
+
+            <!-- Telegram App Inside Screen -->
+            <div class="flex-1 mt-3 rounded-[32px] bg-[#0e1621] text-white p-3 flex flex-col justify-between overflow-hidden relative">
+              
+              <!-- Telegram Chat Header -->
+              <div class="bg-[#17212b] -mx-3 -mt-3 p-3 flex items-center justify-between border-b border-[#0b1016]">
                 <div class="flex items-center gap-2">
-                  <button id="btn-trigger-fall" class="px-3.5 py-2 rounded-lg text-xs font-semibold text-white bg-red-600 hover:bg-red-700 transition-colors shadow-sm flex items-center gap-1.5">
-                    <span>⚡ Thử Mô Phỏng Cú Ngã</span>
-                  </button>
-                  <button id="btn-reset-sim" class="px-3 py-2 rounded-lg text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 transition-colors">
-                    Reset Lại
-                  </button>
+                  <div class="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-xs font-bold">
+                    V
+                  </div>
+                  <div>
+                    <div class="font-bold text-xs">Bot An Ninh Gia Đình</div>
+                    <div class="text-[9px] text-cyan-400 font-mono">Đồng Tháp Channel</div>
+                  </div>
                 </div>
-                <div class="text-[11px] text-slate-500 hidden sm:block">
-                  AI quét liên tục: 3-5 FPS trên CPU
-                </div>
+                <span class="text-[10px] text-slate-400">Trực tuyến</span>
               </div>
+
+              <!-- Message Stream -->
+              <div class="flex-1 py-3 space-y-2.5 overflow-y-auto text-xs">
+                
+                <div class="bg-[#182533] p-2.5 rounded-xl rounded-tl-none border border-slate-700/60 max-w-[90%] text-slate-300 text-[11px]">
+                  Hệ thống bảo vệ đang giám sát 24/7. Mọi khu vực an toàn.
+                  <div class="text-[9px] text-slate-500 text-right mt-1">14:00</div>
+                </div>
+
+                <!-- DYNAMIC TELEGRAM ALERT CARD (XUẤT HIỆN KHI NGÃ) -->
+                <div id="telegram-fall-alert" class="hidden transition-all duration-300 bg-[#2b1820] border-2 border-rose-500/80 p-2.5 rounded-xl rounded-tl-none space-y-2 shadow-lg">
+                  <div class="flex items-center justify-between text-rose-400 font-bold text-[11px] pb-1 border-b border-rose-900/60">
+                    <span>CẢNH BÁO TÉ NGÃ KHẨN CẤP</span>
+                    <span class="text-[9px] font-mono text-rose-300">14:15</span>
+                  </div>
+
+                  <!-- Snapshot Preview -->
+                  <div class="rounded-lg bg-slate-900 border border-rose-900/60 p-2 text-center">
+                    <div class="text-[10px] text-rose-300 font-mono">Ảnh chụp tức thì từ RAM</div>
+                    <div class="text-[9px] text-slate-400">Phòng khách &bull; Nhà Ba Mẹ</div>
+                  </div>
+
+                  <!-- Gemini Vietnamese Context -->
+                  <div class="bg-[#1f1620] p-2 rounded text-[11px] text-slate-200 leading-snug">
+                    <span class="text-cyan-300 font-semibold">Tóm tắt bối cảnh:</span><br>
+                    <em>"Phát hiện người lớn tuổi áo xanh ngã sấp gần mép bàn, bất động hơn 5 giây. Người nhà cần liên hệ ngay!"</em>
+                  </div>
+
+                  <!-- Clip link -->
+                  <div class="bg-[#17212b] p-1.5 rounded flex items-center justify-between text-[10px] text-slate-300">
+                    <span>clip_15s_fullhd.mp4 (4.2 MB)</span>
+                    <span class="text-cyan-400 font-semibold cursor-pointer">Xem clip</span>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Chat Input Bar -->
+              <div class="bg-[#17212b] -mx-3 -mb-3 p-2 border-t border-[#0b1016] text-[10px] text-slate-400 text-center">
+                Tự động gửi qua Telegram Bot API &bull; 0đ chi phí
+              </div>
+
             </div>
 
-            <!-- Right: Telegram Alert Phone Mockup (5 cols) -->
-            <div class="md:col-span-5">
-              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3 shadow-inner max-w-xs mx-auto">
-                <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
-                  
-                  <!-- App Header -->
-                  <div class="bg-slate-900 text-white px-3.5 py-2.5 flex items-center justify-between text-xs">
-                    <div class="flex items-center gap-2">
-                      <span class="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-xs">🤖</span>
-                      <div>
-                        <div class="font-semibold leading-tight">An Ninh Gia Đình</div>
-                        <div class="text-[10px] text-slate-300">Telegram Bot &bull; Tức thì</div>
-                      </div>
-                    </div>
-                    <span class="text-[10px] text-slate-400">14:30</span>
-                  </div>
-
-                  <!-- Chat Body -->
-                  <div class="p-3 space-y-2.5 min-h-[260px] bg-slate-50/70 text-xs">
-                    
-                    <div class="bg-white p-2.5 rounded-lg border border-slate-200/80 shadow-xs text-slate-600 text-[11px]">
-                      ✅ Hệ thống camera hoạt động bình thường. Bộ đệm bộ nhớ sẵn sàng.
-                    </div>
-
-                    <!-- Alert Bubble -->
-                    <div id="telegram-fall-alert" class="hidden transition-all duration-300 bg-red-50 border border-red-200 p-2.5 rounded-lg shadow-sm space-y-2">
-                      <div class="flex items-center justify-between text-red-700 font-bold text-[11px]">
-                        <span>🚨 CẢNH BÁO TÉ NGÃ KHẨN CẤP</span>
-                        <span class="text-[9px] bg-red-100 px-1.5 py-0.2 rounded font-mono">VỪA XONG</span>
-                      </div>
-
-                      <div class="bg-white p-2 rounded border border-red-100 text-[11px] text-slate-700 leading-snug">
-                        <strong class="text-blue-700">💡 Gemini AI tóm tắt:</strong><br>
-                        <em>"Phát hiện người lớn tuổi áo xanh ngã sấp gần bàn phòng khách, nằm im hơn 5 giây. Đề nghị người nhà kiểm tra ngay!"</em>
-                      </div>
-
-                      <div class="bg-white p-1.5 rounded border border-slate-200 flex items-center justify-between text-[11px]">
-                        <span class="text-slate-600 font-mono">🎬 clip_15s_fullhd.mp4</span>
-                        <span class="text-blue-600 font-semibold cursor-pointer">Xem Ngay</span>
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <div class="p-2 bg-slate-100 text-center border-t border-slate-200 text-[10px] text-slate-500">
-                    Gửi tự động &bull; Phí API: 0 VNĐ
-                  </div>
-
-                </div>
-              </div>
-            </div>
+            <!-- Home Indicator Bar -->
+            <div class="w-32 h-1 bg-slate-300 rounded-full mx-auto mt-2"></div>
 
           </div>
 
         </div>
 
       </div>
+
     </section>
 
 
-    <!-- SECTION: TẦM NHÌN DỰ ÁN & VÌ SAO VU. CREATIVE PHÁT TRIỂN NÓ? -->
-    <section id="tam-nhin" class="py-16 sm:py-20 bg-white">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <!-- SECTION: TẦM NHÌN, CÂU CHUYỆN & VÌ SAO CẦN ĐẦU TƯ (TRUYỀN CẢM HỨNG SÂU SẮC) -->
+    <section id="cau-chuyen" class="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+      
+      <div class="liquid-glass rounded-3xl p-7 sm:p-12 space-y-8">
         
-        <div class="text-center max-w-2xl mx-auto mb-12">
-          <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">Tầm Nhìn & Câu Chuyện</span>
-          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">
-            Không Chỉ Là Chiếc Camera. Đây Là Sự An Tâm Cho Mọi Gia Đình.
+        <div class="max-w-2xl">
+          <span class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Tầm nhìn xã hội & Đầu tư</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-1 leading-tight">
+            Khi chúng ta đi làm xa, ai sẽ bảo vệ cha mẹ ở quê nhà?
           </h2>
         </div>
 
-        <div class="space-y-6 text-slate-700 text-base leading-relaxed">
+        <div class="space-y-5 text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
           <p>
-            Hàng triệu người trẻ đang đi làm xa tại TP.HCM hay Hà Nội, trong khi cha mẹ lớn tuổi vẫn đang ở quê nhà (Đồng Tháp, Đồng Nai, miền Tây, miền Trung...). Nỗi lo lớn nhất là: <strong>Người thân ở nhà một mình, lỡ trượt chân té ngã hay đột quỵ thì ai sẽ phát hiện kịp thời?</strong>
+            Mỗi năm, hàng trăm nghìn người trẻ rời quê hương (Đồng Tháp, Đồng Nai, các tỉnh miền Tây, miền Trung...) để lập nghiệp tại các đô thị lớn như TP.HCM hay Hà Nội. Trong căn nhà ở quê, cha mẹ lớn tuổi thường sống một mình hoặc chỉ có hai ông bà nương tựa nhau.
           </p>
           <p>
-            Camera trên thị trường hiện nay có hai vấn đề rất lớn:
+            Nỗi ám ảnh lớn nhất của những người con đi làm xa không phải là áp lực công việc, mà là <strong>một cuộc gọi bất ngờ thông báo cha mẹ trượt ngã trong nhà tắm hay đột quỵ giữa sàn nhà mà không ai hay biết</strong>. Y học gọi đó là "thời gian vàng": Nếu được phát hiện và cấp cứu trong 5&ndash;10 phút đầu tiên, người cao tuổi có thể bảo toàn tính mạng và tránh được di chứng bại liệt suốt đời.
           </p>
           
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-              <h3 class="font-bold text-slate-900 text-sm mb-1">1. Camera rẻ tiền thì "vô dụng" lúc ngặt</h3>
-              <p class="text-xs text-slate-600">
-                Chỉ phát hiện chuyển động ngô nghê. Chó mèo chạy, rèm bay cũng hú còi làm phiền, nhưng khi người ngã thật thì không hề biết phân tích tư thế để báo động.
-              </p>
-            </div>
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-              <h3 class="font-bold text-slate-900 text-sm mb-1">2. Camera thuê bao Cloud thì quá đắt & lo ngại riêng tư</h3>
-              <p class="text-xs text-slate-600">
-                Nhà mạng hay các hãng tính phí từ 80k - 120k/cam/tháng. Gia đình có 6 camera ở quê và thành phố tốn hơn <strong>7 triệu đồng mỗi năm</strong>, lại lo video riêng tư trong phòng khách bị rò rỉ lên mạng.
-              </p>
-            </div>
+          <div class="p-5 rounded-2xl bg-white/80 border border-slate-200/80 my-6">
+            <h3 class="font-bold text-slate-900 text-base mb-2">Thực trạng bế tắc của các giải pháp hiện tại:</h3>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-600">
+              <li>&bull; <strong>Camera giá rẻ thẻ nhớ:</strong> Chỉ hú còi vô tội vạ khi thấy bóng râm hay chó mèo chạy qua. Khi người ngã thật thì bất lực vì không có AI phân tích tư thế nằm.</li>
+              <li>&bull; <strong>Camera thuê bao Cloud:</strong> Thu phí từ 80.000đ &ndash; 120.000đ/tháng/camera. Nhà có 6 camera tốn hơn <strong>7.200.000đ mỗi năm</strong>, lại luôn nơm nớp lo sợ hình ảnh phòng ngủ, phòng khách bị rò rỉ lên mạng.</li>
+            </ul>
           </div>
 
           <p>
-            <strong>VU. Creative</strong> phát triển hệ thống <strong>Edge AI Box</strong> để giải quyết dứt điểm nghịch lý này: Đưa toàn bộ trí tuệ nhân tạo về xử lý trực tiếp trên thiết bị đặt tại gia đình. Bạn mua phần cứng một lần, sử dụng trọn đời, dữ liệu thuộc về chính bạn, và camera thực sự trở thành người bảo vệ thầm lặng 24/7.
+            <strong>Đó là lý do VU. Creative phát triển Edge AI Camera</strong>. 
+            Chúng tôi đưa trí tuệ nhân tạo đặt trực tiếp vào một hộp phần cứng nhỏ gọn tại nhà. Camera tận dụng lại thiết bị có sẵn, phát hiện chính xác cú ngã trong 5 giây, bảo mật tuyệt đối và <strong>không tốn 1 đồng phí duy trì Cloud</strong>.
           </p>
         </div>
 
-      </div>
-    </section>
-
-
-    <!-- SECTION: 3 ĐIỂM KHÁC BIỆT CỐT LÕI (SO SÁNH ĐƠN GIẢN) -->
-    <section id="so-sanh" class="py-16 bg-slate-50 border-t border-slate-100">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6">
-        
-        <div class="text-center max-w-xl mx-auto mb-12">
-          <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">Sự Khác Biệt</span>
-          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">Vì Sao Giải Pháp Này Thắng Thế?</h2>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          
-          <!-- Card 1 -->
-          <div class="bg-white p-6 rounded-xl border border-slate-200 card-shadow">
-            <div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-lg mb-4">
-              0đ
-            </div>
-            <h3 class="font-bold text-slate-900 text-base mb-2">0 VNĐ Phí Duy Trì Cloud</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              Các giải pháp khác thu tiền thuê bao mỗi tháng. Với Edge AI Box của VU. Creative, bạn tận dụng luôn camera cũ có sẵn. Không phí hàng tháng, tiết kiệm hơn 21 triệu đồng sau 3 năm.
+        <!-- 3 Investment Pillars -->
+        <div class="pt-6 border-t border-slate-200 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="liquid-glass-card rounded-2xl p-5">
+            <div class="text-xs font-bold text-slate-900 mb-1">Thị trường 12+ Triệu Dân</div>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              Việt Nam đang bước vào giai đoạn già hóa dân số nhanh nhất lịch sử. Hàng triệu gia đình sẵn sàng chi trả để có sự an tâm tuyệt đối cho cha mẹ.
             </p>
           </div>
-
-          <!-- Card 2 -->
-          <div class="bg-white p-6 rounded-xl border border-slate-200 card-shadow">
-            <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-lg mb-4">
-              🛡️
-            </div>
-            <h3 class="font-bold text-slate-900 text-base mb-2">Riêng Tư Tuyệt Đối 100%</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              Hình ảnh và video không bao giờ gửi lên server công cộng của bên thứ ba. Kết nối liên tỉnh bằng đường truyền mã hóa quân sự WireGuard, chỉ người trong nhà mới có quyền truy cập.
+          <div class="liquid-glass-card rounded-2xl p-5">
+            <div class="text-xs font-bold text-slate-900 mb-1">Hoàn Vốn Nhanh (~6 Tháng)</div>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              Khách hàng tiết kiệm hơn 21 triệu tiền Cloud sau 3 năm, tạo lực đẩy mua sắm cực lớn. Biên lợi nhuận gộp cho nhà đầu tư ước tính đạt trên 45%.
             </p>
           </div>
-
-          <!-- Card 3 -->
-          <div class="bg-white p-6 rounded-xl border border-slate-200 card-shadow">
-            <div class="w-10 h-10 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-lg mb-4">
-              🧠
-            </div>
-            <h3 class="font-bold text-slate-900 text-base mb-2">AI Nâng Cấp Linh Hoạt</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              Phần mềm mở và linh hoạt. Hôm nay phát hiện ngã cho người già; ngày mai có thể nạp thêm mô hình nhận diện khói lửa, báo trộm ban đêm mà không cần vứt bỏ thiết bị cũ.
+          <div class="liquid-glass-card rounded-2xl p-5">
+            <div class="text-xs font-bold text-slate-900 mb-1">Thực Thi Đã Chứng Minh</div>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              Hệ thống đã triển khai thực nghiệm thành công mô hình 3 điểm: TP.HCM &rarr; Đồng Tháp &rarr; Đồng Nai mà không cần mở port modem.
             </p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- SECTION: HỒ SƠ DỰ ÁN & TÀI LIỆU KỸ THUẬT (XEM TRỰC TIẾP) -->
-    <section id="tai-lieu" class="py-16 bg-white">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6">
-        
-        <div class="text-center max-w-xl mx-auto mb-10">
-          <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">Minh Bạch & Bài Bản</span>
-          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">Hồ Sơ Đề Án Chi Tiết</h2>
-          <p class="text-xs sm:text-sm text-slate-600 mt-1">
-            Toàn bộ đề án, đặc tả kỹ thuật và cẩm nang triển khai thực tế đã được chuẩn bị hoàn chỉnh.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          
-          <a href="de-an.html" target="_blank" class="p-4 rounded-xl border border-slate-200 bg-white hover:border-blue-400 card-hover flex flex-col justify-between">
-            <div>
-              <span class="text-xl">📄</span>
-              <h4 class="font-bold text-slate-900 text-sm mt-2">Đề Án Đầu Tư 2026</h4>
-              <p class="text-[11px] text-slate-500 mt-1">Luận điểm kinh doanh, bài toán tài chính và tiềm năng thương phẩm.</p>
-            </div>
-            <div class="mt-4 text-xs font-semibold text-blue-600 flex items-center gap-1">
-              <span>Đọc tài liệu</span> &rarr;
-            </div>
-          </a>
-
-          <a href="dac-ta-he-thong.html" target="_blank" class="p-4 rounded-xl border border-slate-200 bg-white hover:border-blue-400 card-hover flex flex-col justify-between">
-            <div>
-              <span class="text-xl">⚙️</span>
-              <h4 class="font-bold text-slate-900 text-sm mt-2">Đặc Tả Kỹ Thuật v2.1</h4>
-              <p class="text-[11px] text-slate-500 mt-1">Kiến trúc SQLite, Worker Threading, Watchdog và cơ chế Disk Guard.</p>
-            </div>
-            <div class="mt-4 text-xs font-semibold text-blue-600 flex items-center gap-1">
-              <span>Đọc tài liệu</span> &rarr;
-            </div>
-          </a>
-
-          <a href="quy-trinh-mua-sam.html" target="_blank" class="p-4 rounded-xl border border-slate-200 bg-white hover:border-blue-400 card-hover flex flex-col justify-between">
-            <div>
-              <span class="text-xl">🛠️</span>
-              <h4 class="font-bold text-slate-900 text-sm mt-2">Cẩm Nang Mua Sắm</h4>
-              <p class="text-[11px] text-slate-500 mt-1">Bóc tách vật tư 3.7 triệu đồng, hướng dẫn setup BIOS và gửi về quê.</p>
-            </div>
-            <div class="mt-4 text-xs font-semibold text-blue-600 flex items-center gap-1">
-              <span>Đọc tài liệu</span> &rarr;
-            </div>
-          </a>
-
-        </div>
-
-        <!-- Download Box (Mờ + Note đang phát triển) -->
-        <div class="mt-8 p-5 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>
-            <h4 class="font-bold text-slate-900 text-sm">Tải Về Trọn Bộ Mã Nguồn & Bản Cài Đặt</h4>
-            <p class="text-xs text-slate-500 mt-0.5">Dành cho các kỹ sư, đối tác phần cứng và nhà đầu tư cần kiểm tra source code.</p>
-          </div>
-          
-          <div class="relative group shrink-0">
-            <button type="button" onclick="showDevToast('Gói cài đặt & Mã nguồn Full')" class="px-4 py-2 rounded-lg text-xs font-semibold text-slate-400 bg-white border border-slate-200 cursor-not-allowed opacity-50 flex items-center gap-2">
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-              <span>Tải Xuống Gói Cài Đặt (.ZIP)</span>
-            </button>
-            <span class="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-medium text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded shadow-xs whitespace-nowrap">
-              Đang trong giai đoạn phát triển
-            </span>
           </div>
         </div>
 
       </div>
+
     </section>
 
 
-    <!-- SECTION: KÊU GỌI ĐẦU TƯ & LIÊN HỆ FOUNDER (VU. CREATIVE) -->
-    <section id="dau-tu" class="py-16 sm:py-20 bg-slate-900 text-white">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <!-- SECTION: CALL FOR INVESTMENT & CONTACT FORM (KÊU GỌI ĐẦU TƯ) -->
+    <section id="dau-tu" class="max-w-4xl mx-auto px-4 sm:px-6 py-14">
+      
+      <div class="liquid-glass rounded-3xl p-7 sm:p-10">
         
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           
-          <!-- Left Pitch (6 cols) -->
-          <div class="md:col-span-6 space-y-4">
-            <span class="text-xs font-semibold text-blue-400 uppercase tracking-wider">Cơ Hội Đồng Hành</span>
-            <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight leading-snug">
-              Cùng VU. Creative Thương Mại Hóa Giải Pháp Này
+          <div class="md:col-span-6 space-y-3">
+            <span class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Đồng hành phát triển</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
+              Cùng VU. Creative đưa sản phẩm ra thị trường
             </h2>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Mô hình đã chứng minh tính khả thi thực tế qua thử nghiệm kết nối liên tỉnh <strong>TP.HCM &ndash; Đồng Tháp &ndash; Đồng Nai</strong>. 
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Chúng tôi đang tìm kiếm các nhà đầu tư thiên thần (Angel Investor) và đối tác chiến lược để cùng hoàn thiện khuôn vỏ thẩm mỹ, phát triển ứng dụng di động bản thương mại và mở rộng kênh phân phối.
             </p>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Chúng tôi đang tìm kiếm <strong>Nhà đầu tư thiên thần (Angel)</strong> hoặc <strong>Đối tác công nghệ / phân phối</strong> để cùng hoàn thiện thiết kế vỏ hộp thẩm mỹ, phát triển ứng dụng di động và đưa sản phẩm đến tay hàng triệu hộ gia đình.
-            </p>
-
-            <div class="pt-3 border-t border-slate-800 text-xs text-slate-400 space-y-1.5">
-              <div>🎯 <strong>Mục tiêu:</strong> Hoàn vốn trong ~6 tháng</div>
-              <div>📈 <strong>Biên lợi nhuận gộp ước tính:</strong> &gt; 45%</div>
-              <div>👤 <strong>Nhà phát triển:</strong> VU. Creative</div>
+            <div class="pt-2 text-xs text-slate-500 space-y-1">
+              <div>Nhà sáng lập & Kỹ sư trưởng: <strong class="text-slate-800">VU. Creative</strong></div>
+              <div>Giai đoạn: <strong class="text-slate-800">Seed Round 2026</strong></div>
             </div>
           </div>
 
-          <!-- Right Form (6 cols) -->
-          <div class="md:col-span-6 bg-white text-slate-800 p-6 rounded-2xl shadow-xl">
-            <h3 class="font-bold text-slate-900 text-base mb-1">Gặp Gỡ &amp; Thảo Luận Chi Tiết</h3>
-            <p class="text-xs text-slate-500 mb-4">Để lại thông tin để nhận Financial Model và đặt lịch trao đổi cùng Founder.</p>
+          <div class="md:col-span-6 bg-white/90 backdrop-blur-md p-5 sm:p-6 rounded-2xl border border-white shadow-xs">
+            <h3 class="font-bold text-slate-900 text-sm mb-1">Đăng ký kết nối đầu tư</h3>
+            <p class="text-[11px] text-slate-500 mb-4">Để lại thông tin để trao đổi trực tiếp cùng Founder VU. Creative.</p>
 
             <form id="invest-form" class="space-y-3">
               <div>
-                <label class="block text-[11px] font-semibold text-slate-700 mb-0.5">Họ và tên của bạn *</label>
+                <label class="block text-[11px] font-medium text-slate-700 mb-1">Họ và tên *</label>
                 <input type="text" id="form-name" required placeholder="Nguyễn Văn A" 
-                  class="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-blue-500 focus:bg-white transition-all">
+                  class="w-full px-3 py-2 rounded-xl bg-white border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-slate-900 transition-all">
               </div>
 
               <div class="grid grid-cols-2 gap-2">
                 <div>
-                  <label class="block text-[11px] font-semibold text-slate-700 mb-0.5">Số điện thoại / Zalo *</label>
+                  <label class="block text-[11px] font-medium text-slate-700 mb-1">Số điện thoại *</label>
                   <input type="tel" id="form-phone" required placeholder="0901 xxx xxx" 
-                    class="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-blue-500 focus:bg-white transition-all">
+                    class="w-full px-3 py-2 rounded-xl bg-white border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-slate-900 transition-all">
                 </div>
                 <div>
-                  <label class="block text-[11px] font-semibold text-slate-700 mb-0.5">Email *</label>
+                  <label class="block text-[11px] font-medium text-slate-700 mb-1">Email *</label>
                   <input type="email" id="form-email" required placeholder="name@email.com" 
-                    class="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-blue-500 focus:bg-white transition-all">
+                    class="w-full px-3 py-2 rounded-xl bg-white border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-slate-900 transition-all">
                 </div>
               </div>
 
               <div>
-                <label class="block text-[11px] font-semibold text-slate-700 mb-0.5">Bạn quan tâm với vai trò:</label>
-                <select id="form-role" class="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-blue-500 focus:bg-white transition-all">
-                  <option value="investor">Nhà Đầu Tư Cá Nhân / Quỹ Đầu Tư</option>
-                  <option value="distributor">Đại Lý Phân Phối / Lắp Đặt An Ninh</option>
-                  <option value="customer">Khách Hàng Muốn Đặt Hàng Trước</option>
-                  <option value="partner">Đối Tác R&amp;D Phần Cứng</option>
+                <label class="block text-[11px] font-medium text-slate-700 mb-1">Bạn quan tâm với tư cách:</label>
+                <select id="form-role" class="w-full px-3 py-2 rounded-xl bg-white border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-slate-900 transition-all">
+                  <option value="investor">Nhà Đầu Tư Thiên Thần / Quỹ Đầu Tư</option>
+                  <option value="distributor">Đại Lý Phân Phối / Đối Tác Bán Hàng</option>
+                  <option value="hardware_partner">Đối Tác Sản Xuất Phần Cứng</option>
+                  <option value="early_adopter">Khách Hàng Đặt Mua Sớm</option>
                 </select>
               </div>
 
               <div>
-                <label class="block text-[11px] font-semibold text-slate-700 mb-0.5">Ghi chú hoặc lời nhắn:</label>
-                <textarea id="form-note" rows="2" placeholder="Tôi muốn tìm hiểu về cơ cấu cổ phần / suất đầu tư..." 
-                  class="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-blue-500 focus:bg-white transition-all"></textarea>
+                <label class="block text-[11px] font-medium text-slate-700 mb-1">Nội dung trao đổi:</label>
+                <textarea id="form-note" rows="2" placeholder="Tôi muốn tìm hiểu thêm về định giá và suất đầu tư..." 
+                  class="w-full px-3 py-2 rounded-xl bg-white border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-slate-900 transition-all"></textarea>
               </div>
 
-              <button type="submit" class="w-full py-2.5 rounded-lg text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm">
-                Gửi Yêu Cầu Kết Nối
+              <button type="submit" class="w-full py-2.5 rounded-full text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 transition-all shadow-xs">
+                Gửi thông tin kết nối
               </button>
             </form>
 
-            <div id="form-success-msg" class="hidden mt-3 p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs text-center">
-              🎉 <strong>Cảm ơn bạn!</strong> Founder <strong>VU. Creative</strong> sẽ chủ động liên hệ lại sớm nhất.
+            <div id="form-success-msg" class="hidden mt-3 p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs text-center">
+              Thông tin đã được lưu lại. Founder VU. Creative sẽ liên hệ trao đổi cùng bạn.
             </div>
 
           </div>
@@ -598,90 +578,81 @@
         </div>
 
       </div>
+
     </section>
 
   </main>
 
-  <!-- FOOTER TỐI GIẢN -->
-  <footer class="bg-white border-t border-slate-100 py-8 text-xs text-slate-500">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+
+  <!-- FOOTER TỐI GIẢN CHUẨN APPLE -->
+  <footer class="border-t border-black/5 py-8 text-xs text-slate-400">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>
-        <strong>Edge AI Camera System</strong> &bull; Sáng tạo và phát triển bởi <span class="text-slate-800 font-semibold">VU. Creative</span>.
+        &copy; 2026 Edge AI Camera &bull; Sáng tạo và phát triển bởi <span class="text-slate-700 font-semibold">VU. Creative</span>.
       </div>
-      <div class="flex items-center gap-5 text-slate-600">
-        <a href="de-an.html" class="hover:text-blue-600">Đề án</a>
-        <a href="dac-ta-he-thong.html" class="hover:text-blue-600">Đặc tả</a>
-        <a href="quy-trinh-mua-sam.html" class="hover:text-blue-600">Mua sắm</a>
-        <a href="README.md" class="hover:text-blue-600">GitHub Pages Guide</a>
+      <div class="flex items-center gap-4 text-slate-500">
+        <span>Bảo mật dữ liệu 100% tại gia</span>
+        <span>&bull;</span>
+        <span>0 VNĐ phí duy trì</span>
       </div>
     </div>
   </footer>
 
-  <!-- TOAST NOTIFICATION: IN-DEVELOPMENT NOTICE (TỐI GIẢN, LỊCH SỰ) -->
-  <div id="dev-toast" class="fixed bottom-5 right-5 max-w-sm z-50 transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300 ease-out">
-    <div class="p-3.5 rounded-xl bg-slate-900 text-white shadow-xl border border-slate-800 text-xs flex items-start gap-3">
-      <span class="text-amber-400 text-base leading-none">🔒</span>
+
+  <!-- TOAST NOTIFICATION: IN-DEVELOPMENT (KHÔNG ICON, LIQUID GLASS) -->
+  <div id="dev-toast" class="fixed bottom-6 right-6 max-w-sm z-50 transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300 ease-out">
+    <div class="liquid-glass rounded-2xl p-4 text-xs text-slate-800 flex items-start justify-between gap-3 shadow-lg">
       <div class="flex-1">
-        <div class="font-bold text-slate-100">Đang Trong Giai Đoạn Phát Triển</div>
-        <div id="dev-toast-desc" class="text-slate-300 text-[11px] mt-0.5 leading-snug">
+        <div class="font-bold text-slate-900">Đang trong giai đoạn phát triển</div>
+        <div id="dev-toast-desc" class="text-[11px] text-slate-500 mt-0.5 leading-snug">
           Mục này đang được hoàn thiện thử nghiệm nội bộ bởi VU. Creative.
         </div>
-        <div class="mt-2 flex items-center gap-2">
-          <a href="#dau-tu" onclick="hideDevToast()" class="text-blue-400 hover:underline font-semibold text-[11px]">
-            Đăng ký nhận thông báo &rarr;
-          </a>
-        </div>
+        <a href="#dau-tu" onclick="hideDevToast()" class="text-blue-600 hover:underline font-semibold text-[11px] mt-2 inline-block">
+          Đăng ký kết nối đầu tư &rarr;
+        </a>
       </div>
-      <button onclick="hideDevToast()" class="text-slate-400 hover:text-white text-xs p-1">✕</button>
+      <button onclick="hideDevToast()" class="text-slate-400 hover:text-slate-800 text-xs px-1">✕</button>
     </div>
   </div>
 
-  <!-- SCRIPT LOGIC (MÔ PHỎNG AI & TOAST) -->
+
+  <!-- SCRIPT LOGIC (MÔ PHỎNG DUAL APP & FORM) -->
   <script>
-    // SIMULATION SCRIPT
     const btnTriggerFall = document.getElementById('btn-trigger-fall');
     const btnResetSim = document.getElementById('btn-reset-sim');
     const personStanding = document.getElementById('person-standing');
     const personFallen = document.getElementById('person-fallen');
     const simViewport = document.getElementById('sim-viewport');
+    
     const telegramFallAlert = document.getElementById('telegram-fall-alert');
-
-    const teleAngle = document.getElementById('tele-angle');
-    const teleStatus = document.getElementById('tele-status');
+    const dynamicIslandAlert = document.getElementById('dynamic-island-alert');
 
     let simTimer = null;
 
     btnTriggerFall?.addEventListener('click', () => {
+      // Step 1: Dáng ngã trong App PWA
       personStanding.classList.add('hidden');
       personFallen.classList.remove('hidden');
-      simViewport.classList.remove('bg-slate-100');
-      simViewport.classList.add('bg-red-50/50', 'border-red-300');
+      simViewport.classList.add('border-rose-600/80');
 
-      teleAngle.innerText = '12° (Nằm Sàn)';
-      teleAngle.className = 'font-bold text-red-600';
-      teleStatus.innerText = 'Xác thực cú ngã (>5s)...';
-      teleStatus.className = 'font-bold text-amber-600';
+      // Step 2: Dynamic Island trên điện thoại con cái nhấp nháy
+      dynamicIslandAlert.classList.remove('hidden');
 
+      // Step 3: Tin nhắn Telegram Bot bắn tới sau 800ms
       clearTimeout(simTimer);
       simTimer = setTimeout(() => {
-        teleStatus.innerText = 'BÁO ĐỘNG ĐÃ PHÁT';
-        teleStatus.className = 'font-bold text-red-600 animate-pulse';
         telegramFallAlert.classList.remove('hidden');
-      }, 1200);
+        telegramFallAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 800);
     });
 
     btnResetSim?.addEventListener('click', () => {
       clearTimeout(simTimer);
       personStanding.classList.remove('hidden');
       personFallen.classList.add('hidden');
-      simViewport.classList.remove('bg-red-50/50', 'border-red-300');
-      simViewport.classList.add('bg-slate-100');
+      simViewport.classList.remove('border-rose-600/80');
+      dynamicIslandAlert.classList.add('hidden');
       telegramFallAlert.classList.add('hidden');
-
-      teleAngle.innerText = '88° (Đứng)';
-      teleAngle.className = 'font-bold text-blue-600';
-      teleStatus.innerText = 'An Toàn';
-      teleStatus.className = 'font-bold text-emerald-600';
     });
 
     // TOAST LOGIC
@@ -722,9 +693,9 @@
         note: document.getElementById('form-note').value,
         date: new Date().toISOString()
       };
-      const allLeads = JSON.parse(localStorage.getItem('vu_edge_ai_leads') || '[]');
+      const allLeads = JSON.parse(localStorage.getItem('vu_creative_leads') || '[]');
       allLeads.push(lead);
-      localStorage.setItem('vu_edge_ai_leads', JSON.stringify(allLeads));
+      localStorage.setItem('vu_creative_leads', JSON.stringify(allLeads));
 
       investForm.reset();
       successMsg.classList.remove('hidden');
